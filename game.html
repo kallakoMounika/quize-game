@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Game</title>
+
+<style>
+body{
+    font-family: Arial;
+    padding:20px;
+    background:#ecf5ff;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+/* HUD */
+.hud{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+/* Progress Bar */
+.progress-bar{
+    width:100%;
+    height:20px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#ddd;
+}
+
+.progress-bar-full{
+    height:100%;
+    background:linear-gradient(90deg,#56a5eb,#00c6ff);
+    width:0%;
+    transition:width 0.4s ease;
+}
+
+/* Choices */
+.choice-container{
+    display:flex;
+    margin:12px 0;
+    border-radius:10px;
+    overflow:hidden;
+    background:white;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.choice-container:hover{
+    transform:scale(1.02);
+}
+
+.choice-container:active{
+    transform:scale(0.98);
+}
+
+.choice-prefix{
+    padding:12px;
+    background:#56a5eb;
+    color:white;
+}
+
+.choice-text{
+    padding:12px;
+    width:100%;
+}
+
+/* Correct Answer */
+.correct{
+    background: linear-gradient(45deg, #28a745, #5cd65c);
+    color:white;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #28a745;
+    transition: all 0.3s ease;
+}
+
+/* Wrong Answer */
+.incorrect{
+    background: linear-gradient(45deg, #dc3545, #ff6b6b);
+    color:white;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #dc3545;
+    transition: all 0.3s ease;
+}
+
+/* End Screen */
+#endScreen{
+    display:none;
+    text-align:center;
+    margin-top:50px;
+}
+
+#endScreen a{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 20px;
+    border-radius:8px;
+    border:1px solid #56a5eb;
+    text-decoration:none;
+    color:#56a5eb;
+}
+
+#endScreen a:hover{
+    background:#56a5eb;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hud">
+  <div>
+    <p>Question</p>
+    <h3 id="progressText"></h3>
+    <div class="progress-bar">
+      <div id="progressBarFull" class="progress-bar-full"></div>
+    </div>
+  </div>
+
+  <div>
+    <p>Score</p>
+    <h3 id="score">0</h3>
+  </div>
+</div>
+
+<h2 id="question"></h2>
+
+<div class="choice-container">
+<p class="choice-prefix">A</p>
+<p class="choice-text" data-number="1"></p>
+</div>
+
+<div class="choice-container">
+<p class="choice-prefix">B</p>
+<p class="choice-text" data-number="2"></p>
+</div>
+
+<div class="choice-container">
+<p class="choice-prefix">C</p>
+<p class="choice-text" data-number="3"></p>
+</div>
+
+<div class="choice-container">
+<p class="choice-prefix">D</p>
+<p class="choice-text" data-number="4"></p>
+</div>
+
+</div>
+
+<div id="endScreen">
+  <h1>Quiz Completed 🎉</h1>
+  <h2>Your Score: <span id="finalScore"></span></h2>
+  <a href="game.html">Play Again</a>
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
